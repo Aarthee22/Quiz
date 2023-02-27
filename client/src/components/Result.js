@@ -1,6 +1,53 @@
-import React from 'react'
-export default function Quiz(){
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { resetAllAction } from '../redux/question_reducer'
+import { resetResultAction } from '../redux/result_reducer'
+import '../styles/Result.css'
+import ResultTable from './ResultTable'
+import { earnedPoints } from '../helper/helper';
+
+export default function Result(){
+    const dispatch = useDispatch()
+  const state=useSelector(state=>state)
+const { questions : { queue, answers}, result : { result, userId}} = useSelector(state => state)
+
+  
+    const totalPoints=queue.length *10;
+    const earnPoints = earnedPoints(result, answers);
+    useEffect(()=>{
+        console.log(state)
+    console.log(earnPoints)
+})
+    function onRestart(){
+        //console.log('onRestart')
+        dispatch(resetAllAction())
+        dispatch(resetResultAction())
+    }
     return(
-        <div>Result</div>
+        <div className='container'>
+            <h1 className='title text-light'>Quiz Application</h1>
+            <div className='result flex-center'>
+            <div className='flex'>
+                <span>Username</span>
+                <span className='bold'>sdsad</span>
+            </div>
+            <div className='flex'>
+                <span>Total points</span>
+                <span className='bold'>50</span>
+            </div>
+            <div className='flex'>
+                <span>Earned Points</span>
+                <span className='bold'>30</span>
+            </div>
+            </div>
+            <div className='start'>
+<Link className='btn' to={'/'} onClick={onRestart}>Restart</Link>
+            </div>
+            <div className='container'>
+                {/*Result Table*/}
+                <ResultTable></ResultTable>
+            </div>
+        </div>
     )
 }
