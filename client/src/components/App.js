@@ -5,6 +5,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Main from './Main';
 import Quiz from './Quiz';
 import Result from './Result';
+import { CheckUserExit } from '../helper/helper';
 //react routes
 const router = createBrowserRouter([
   {
@@ -13,11 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/quiz',
-    element: <Quiz></Quiz>
+    element: <CheckUserExit><Quiz></Quiz></CheckUserExit>
   },
   {
     path: '/result',
-    element: <Result></Result>
+    element: <CheckUserExit><Result></Result></CheckUserExit>
   }
 ])
 function App() {

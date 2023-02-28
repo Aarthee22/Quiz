@@ -5,6 +5,7 @@ import data, {answers} from '../components/database/data.js'
 import * as Action from '../redux/question_reducer'
 /** Fetch question hook to fetch api data and set value to store */
 export const useFetchQuestion = ()=>{
+  
     const dispatch=useDispatch();
     const [getData,setGetData]=useState({isLoading:false,apiData:[],serverError:null});
         useEffect(()=>{
@@ -34,7 +35,9 @@ return [getData,setGetData];
 /**MoveAction Dispatch function */
 export const moveNextQuestion = ()=>async(dispatch)=>{
     try{
+    
        dispatch(Action.moveNextAction())
+       
     }catch(error){
         console.log(error)
     }

@@ -4,6 +4,8 @@
   --primary-color: #0DFF92;
   --dark-color:#222222;
   --light-color: #f0f0f0;
+  --correct-color:rgb(15, 231, 15);
+  --wrong-color:red;
 }
 
 body, html{
@@ -170,3 +172,5 @@ input[type=radio]:checked ~ .text-primary{
 .checked::before{
   background: var(--primary-color)
 }
+
+

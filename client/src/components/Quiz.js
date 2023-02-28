@@ -11,10 +11,9 @@ export default function Quiz(){
     const [check,setChecked]=useState(undefined);
 
     const result= useSelector(state=>state.result.result);
-    const {queue,trace}= useSelector(state=>state.questions);
+    const {queue,trace,answers}= useSelector(state=>state.questions);
     const dispatch=useDispatch();
-    
-    
+ 
     /**Prev button event handler */
     function onPrev(){
         /** if condition to check if trace>0 */
@@ -34,8 +33,18 @@ export default function Quiz(){
     }
        }
         setChecked(undefined)
+   /** To check if the answer is correct for each question as you go. */     
+    if(check==answers[trace]){
+       // document.getElementsByName(options[check]).style.color ="green"
+        console.log(true)
+    }
+    else{
+       // document.getElementsByName(options[check]).style.color ="red"
+    
+    }
    
     }
+
     function onChecked(check){
         console.log(check)
         setChecked(check)

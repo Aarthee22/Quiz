@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 /**Custom Hooks */
 import { useFetchQuestion } from '../hooks/FetchQuestion.js';
-
 import { updateResult } from '../hooks/SetResult.js';
+
 export default function Questions({onChecked}){
     
     const [{isLoading,apiData,serverError}]=useFetchQuestion()
@@ -14,9 +14,9 @@ export default function Questions({onChecked}){
     const questions= useSelector(state=>state.questions.queue[state.questions.trace])
     const {trace}=useSelector(state=>state.questions);
     const result=useSelector(state=>state.result.result);
-
+    const state=useSelector(state=>state)
+    const {answers}= useSelector(state=>state.questions);
   useEffect(()=>{
-    //console.log({trace,checked})
     dispatch(updateResult({trace,checked}))
 },[checked])
 
@@ -25,8 +25,8 @@ export default function Questions({onChecked}){
         setChecked(i)
         dispatch(updateResult({trace,checked}))
     }
-if(isLoading) return <h3 className='text-light'>isLoading</h3>
-if(serverError) return <h3 className='text-light'>serverError || "Unknown Error"</h3>
+    if(isLoading) return <h3 className='text-light'>isLoading</h3>
+    if(serverError) return <h3 className='text-light'>serverError || "Unknown Error"</h3>
 
     return(
         <div  className='questionscs'>

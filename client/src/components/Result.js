@@ -14,7 +14,7 @@ const { questions : { queue, answers}, result : { result, userId}} = useSelector
 
   
     const totalPoints=queue.length *10;
-    const earnPoints = earnedPoints(result, answers);
+    const earnPoints = earnedPoints(result, answers,10);
     useEffect(()=>{
         console.log(state)
     console.log(earnPoints)
@@ -34,11 +34,11 @@ const { questions : { queue, answers}, result : { result, userId}} = useSelector
             </div>
             <div className='flex'>
                 <span>Total points</span>
-                <span className='bold'>50</span>
+                <span className='bold'>{totalPoints}||0</span>
             </div>
             <div className='flex'>
                 <span>Earned Points</span>
-                <span className='bold'>30</span>
+                <span className='bold'>{earnPoints}|| 0 </span>
             </div>
             </div>
             <div className='start'>
