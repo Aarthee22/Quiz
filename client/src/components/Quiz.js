@@ -33,7 +33,7 @@ export default function Quiz(){
     }
        }
         setChecked(undefined)
-   /** To check if the answer is correct for each question as you go. */     
+   /** To check if the answer is correct for each question as you go.    
     if(check==answers[trace]){
        // document.getElementsByName(options[check]).style.color ="green"
         console.log(true)
@@ -42,11 +42,11 @@ export default function Quiz(){
        // document.getElementsByName(options[check]).style.color ="red"
     
     }
-   
+    */ 
     }
 
     function onChecked(check){
-        console.log(check)
+        //console.log(check)
         setChecked(check)
             
     }
@@ -55,7 +55,7 @@ if(result.length && result.length>=queue.length){
     return <Navigate to={'/result'} replace='true'></Navigate>
 }
     return(
-        <div className='container'>
+        <div className='container1'>
             <h1 className='title text-light'>Quiz Application</h1>
             {/* dispaly questions */}
         <Questions onChecked={onChecked}/> 

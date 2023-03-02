@@ -7,18 +7,18 @@
     gap: 1em;
 }
 
-.container .flex{
+.container1 .flex{
     display: flex;
     justify-content: space-between;
     
 }
 
-.container .flex span {
+.container1 .flex span {
     font-size: 1.4em;
     color: #cecece;
 }
 
-.container .flex span.achive {
+.container1 .flex span.achive {
     font-weight: bold;
     color: #ff2a66;
     color: #2aff95;

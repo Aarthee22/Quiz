@@ -7,15 +7,19 @@ import { updateResult } from '../hooks/SetResult.js';
 
 export default function Questions({onChecked}){
     
-    const [{isLoading,apiData,serverError}]=useFetchQuestion()
+    
 //useSelector(state=>console.log(state));
     const [checked,setChecked]=useState(undefined);
-    const dispatch=useDispatch()
-    const questions= useSelector(state=>state.questions.queue[state.questions.trace])
     const {trace}=useSelector(state=>state.questions);
     const result=useSelector(state=>state.result.result);
+    const [{isLoading,apiData,serverError}]=useFetchQuestion()
+    
+   const questions= useSelector(state=>state.questions.queue[state.questions.trace])
+    const dispatch=useDispatch()
+    
     const state=useSelector(state=>state)
     const {answers}= useSelector(state=>state.questions);
+
   useEffect(()=>{
     dispatch(updateResult({trace,checked}))
 },[checked])
@@ -29,17 +33,17 @@ export default function Questions({onChecked}){
     if(serverError) return <h3 className='text-light'>serverError || "Unknown Error"</h3>
 
     return(
-        <div  className='questionscs'>
+        <div  className='questions'>
             <h2 className='text-light'>{questions?.question}</h2>
-            <ul key={questions?.id}>
+            <ul className='customul' key={questions?.id}>
                 {
                     questions?.options.map((q,i)=>(
-                        <li key={i}>
+                        <li className='li1' key={i}>
                         <input type="radio" value={false}
                         id={`q${i}-options`} name="options"
                         onChange={()=>onSelect(i)} />
                     
-                    <label htmlFor={`q${i}-options`} className='text-primary'>{q}</label>
+                    <label htmlFor={`q${i}-options`} className='label1 text1-primary'>{q}</label>
                         <div className={`check ${result[trace] == i ? 'checked' : ''}`}></div>
                       
 

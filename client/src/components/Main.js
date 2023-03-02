@@ -3,7 +3,12 @@ import {Link} from 'react-router-dom'
 import '../styles/Main.css';
 import { useDispatch } from 'react-redux';
 import { setUserId } from '../redux/result_reducer';
+
 export default function Main(){
+   <>
+   
+    
+   </>
     const dispatch=useDispatch()
 
     const inputRef = useRef(null)
@@ -13,10 +18,11 @@ export default function Main(){
         }
     }
     return(
-        <div className='container'>
+       <div>
+       <div className='container1'>
             <h1 className='title text-light'>Quiz Application</h1>
             {/*Rules for the quiz*/}
-            <ol>
+            <ol className="customOl">
                 <li>fadad</li>
                 <li>asdassA</li>
             </ol>
@@ -26,6 +32,9 @@ export default function Main(){
             <div className='start'>
                 <Link className='btn' to={'quiz'} onClick={startQuiz}>Start Quiz</Link>
             </div>
-        </div>
+       
+</div>
+ 
+    </div>
     )
 }
