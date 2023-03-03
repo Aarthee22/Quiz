@@ -7,6 +7,7 @@ import '../styles/Result.css'
 import ResultTable from './ResultTable'
 import { earnedPoints } from '../helper/helper';
 import { usePublishResult } from '../hooks/SetResult'
+import Footer from './Footer'
 
 export default function Result(){
     const dispatch = useDispatch()
@@ -34,6 +35,7 @@ const { questions : { queue, answers}, result : { result, userId}} = useSelector
         dispatch(resetResultAction())
     }
     return(
+        <div>
         <div className='container1'>
             <h1 className='title text-light'>Quiz Application</h1>
             <div className='result flex-center'>
@@ -57,6 +59,8 @@ const { questions : { queue, answers}, result : { result, userId}} = useSelector
                 {/*Result Table*/}
                 <ResultTable></ResultTable>
             </div>
+        </div>
+        <Footer></Footer>
         </div>
     )
 }

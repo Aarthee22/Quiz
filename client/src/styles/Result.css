@@ -41,7 +41,9 @@ table {
     text-align: center;
     /* color: #cecece; */
     background: #d8d8d8;
+    border: 3px dashed;
     padding: 18px 0;
+    
 }
 
 .table-header > tr > td{

@@ -7,6 +7,7 @@ import Quiz from './Quiz';
 import Result from './Result';
 import { CheckUserExit } from '../helper/helper';
 
+
 //react routes
 const router = createBrowserRouter([
   {
@@ -24,9 +25,9 @@ const router = createBrowserRouter([
 ])
 function App() {
   return (
-   <>
+ <>
    <RouterProvider router={router}></RouterProvider> 
-   
+  
    </>
   );
 }

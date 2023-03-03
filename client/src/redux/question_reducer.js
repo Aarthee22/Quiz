@@ -4,7 +4,8 @@ export const questionReducer =createSlice({
     initialState:{
         queue:[],
         answers:[],
-        trace:0
+        trace:0,
+        chkAns:false
     },
     reducers:{
         startExamAction:(state,action)=>{
@@ -34,9 +35,16 @@ export const questionReducer =createSlice({
                 answers:[],
                 trace:0
             }
+        },
+        evaluateAnswerAction:(state)=>{
+            return {
+                ...state,
+                chkAns:true
+            }
         }
+
     }
 })
 
-export const {startExamAction,moveNextAction,movePrevAction,resetAllAction}=questionReducer.actions
+export const {startExamAction,moveNextAction,movePrevAction,resetAllAction,evaluateAnswerAction}=questionReducer.actions
 export default questionReducer.reducer

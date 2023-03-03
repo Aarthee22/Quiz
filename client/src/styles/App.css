@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root{
-  --primary1-color: #0DFF92;
+  --primary1-color: #ff960dcb;
   --dark-color:#222222;
   --light-color: #f0f0f0;
   --correct-color:rgb(15, 231, 15);
@@ -9,8 +9,11 @@
 }
 
 body, html{
-  height: 100%;
-  background: var(--dark-color)
+
+  background: var(--dark-color);
+  min-height: 100vh;
+width:100%;
+
 }
 
 * > *{
@@ -18,25 +21,32 @@ body, html{
 }
 
 .container1{
-  display: block;
+  display: flex; 
+  flex-direction: column;
   position: relative;
   margin: 40px auto;
-  height: auto;
-  width: 800px;
+  width: 50%;
   padding: 20px;
+  min-height: 82vh;
+
+ 
 }
 
 
 .container1 .title{
     font-size: 3em;
     text-align: center;
-    border: 5px solid var(--primary-color);
+    border: 5px solid var(--primary1-color);
     padding: .3em .2em;
     border-radius: 4px;
 }
 
 .text-light {
 	color: var(--light-color)
+}
+
+.text-style{
+  font-size: 1.2em;
 }
 
 .container1 .customul{
@@ -61,7 +71,7 @@ body, html{
 .container1 .grid{
     margin-top: 3em;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
 }
 
 
@@ -87,6 +97,13 @@ body, html{
     background-color: #faff5a;
     justify-self: flex-start;
 }
+
+.middle{
+  background-color: var(--primary1-color);
+  align-items: center;
+  padding: .1em 1.0em;
+}
+
 
 .customul .li1{
   color: #AAAAAA;
@@ -174,4 +191,29 @@ input[type=radio]:checked ~ .text1-primary{
   background: var(--primary1-color)
 }
 
+.correct {
+  border: 5px solid var(--corect-color) !important;
+}
+
+.checked::before{
+  background: var(--correct-color)
+}
+
+.wrong {
+  border: 5px solid var(--wrong-color) !important;
+}
+
+.checked::before{
+  background: var(--wrong-color)
+}
+@media screen and (max-width: 768px) {
+  .container1{
+    display: block;
+    position: relative;  
+    height: auto;
+    width: 100%;
+    align-items: center;
+  
+  }
+}
 

@@ -54,3 +54,11 @@ export const movePrevQuestion = ()=>async(dispatch)=>{
         console.log(error)
     }
 }
+
+export const evaluateAnswer = ()=>async(dispatch)=>{
+    try{
+       dispatch(Action.evaluateAnswerAction())
+    }catch(error){
+        console.log(error)
+    }
+}
