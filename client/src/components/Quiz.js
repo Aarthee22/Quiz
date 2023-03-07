@@ -15,7 +15,7 @@ export default function Quiz(){
 
     const result= useSelector(state=>state.result.result);
     const {queue,trace,answers}= useSelector(state=>state.questions);
-    const {chkAns}=useSelector(state=>state.questions)
+   
     const dispatch=useDispatch();
  //console.log(answers)
  const [value, setChangeText] = useState(true);

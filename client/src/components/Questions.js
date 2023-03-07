@@ -1,9 +1,9 @@
 import React, { useEffect,useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 /**Custom Hooks */
 import { useFetchQuestion } from '../hooks/FetchQuestion.js';
-import { updateResult } from '../hooks/SetResult.js';
+/** import { updateResult } from '../hooks/SetResult.js'; */
 
 
 export default function Questions({onChecked}){
@@ -15,11 +15,8 @@ export default function Questions({onChecked}){
     const result=useSelector(state=>state.result.result);
     const [{isLoading,apiData,serverError}]=useFetchQuestion()
     const questions= useSelector(state=>state.questions.queue[state.questions.trace])
-    const dispatch=useDispatch()
-    const {answers}= useSelector(state=>state.questions);
-    const state=useSelector(state=>state);
+    //const dispatch=useDispatch()
     const answer=useSelector(state=>state.questions.chkAns);
-//console.log(answer)
 { /**  useEffect(()=>{
     dispatch(updateResult({trace,checked}))
 },[checked]) */}
@@ -33,7 +30,7 @@ export default function Questions({onChecked}){
     }
  
 
-   // if(isLoading) return <h3 className='text-light'>isLoading</h3>
+    if(isLoading) return <h3 className='text-light'>Questions Loading</h3>
     if(serverError) return <h3 className='text-light'>serverError || "Unknown Error"</h3>
 
     return(
