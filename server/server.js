@@ -36,6 +36,12 @@ try{
     app.listen(port,()=>{
         console.log(`Server connected to http://localhost:${port}`)
     })
+    if (process.env.NODE_ENV === 'production') {
+        //*Set static folder up in production
+        app.use(express.static('client/build'));
+    
+        app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
+      }
 }catch(error){
     console.log("Cannot connect to the server");
 }
