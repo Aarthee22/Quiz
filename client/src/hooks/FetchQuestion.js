@@ -55,9 +55,16 @@ export const movePrevQuestion = ()=>async(dispatch)=>{
     }
 }
 
-export const evaluateAnswer = ()=>async(dispatch)=>{
+export const evaluateCorrectAnswer = ()=>async(dispatch)=>{
     try{
-       dispatch(Action.evaluateAnswerAction())
+       dispatch(Action.evaluateCorrectAnswerAction())
+    }catch(error){
+        console.log(error)
+    }
+}
+export const evaluateInCorrectAnswer = ()=>async(dispatch)=>{
+    try{
+       dispatch(Action.evaluateInCorrectAnswerAction())
     }catch(error){
         console.log(error)
     }

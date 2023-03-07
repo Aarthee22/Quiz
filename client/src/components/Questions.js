@@ -2,9 +2,9 @@ import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 /**Custom Hooks */
-import { evaluateAnswer, useFetchQuestion } from '../hooks/FetchQuestion.js';
+import { useFetchQuestion } from '../hooks/FetchQuestion.js';
 import { updateResult } from '../hooks/SetResult.js';
-import handleChange from './Quiz.js'
+
 
 export default function Questions({onChecked}){
     
@@ -19,16 +19,17 @@ export default function Questions({onChecked}){
     const {answers}= useSelector(state=>state.questions);
     const state=useSelector(state=>state);
     const answer=useSelector(state=>state.questions.chkAns);
-console.log(answer)
-  useEffect(()=>{
+//console.log(answer)
+{ /**  useEffect(()=>{
     dispatch(updateResult({trace,checked}))
-},[checked])
+},[checked]) */}
 
 
     function onSelect(i){
         onChecked(i)
         setChecked(i)
-        dispatch(updateResult({trace,checked}))
+        /** don't want user to update the result after submit */
+       // dispatch(updateResult({trace,checked}))
     }
  
 
@@ -47,19 +48,18 @@ console.log(answer)
                         onChange={()=>onSelect(i)} />
                     
                     <label htmlFor={`q${i}-options`} className='label1 text1-primary'>{q}</label>
-                    <div className={`check ${result[trace] == i? ' checked correct' : ''}`}> </div>
-                  { `${answer}`=== 'true' ? <i className="fa-regular fa-circle-check"></i> : <></>}  
+                    <div className={`check ${result[trace] == i? ' checked' : ''}`}> </div>
                     </li>
-                         
+  
                     ))
-                  
-               
                 }
-         
-         
+
             </ul>
-           
-            <i className="fa-sharp fa-regular fa-circle-xmark"></i>
+           <br></br>
+           <div className='text-center'>
+            { `${answer}`=== 'true'?<i className=" fa-3x fa-regular fa-circle-check" style={{color:'green'}}></i> : <></>}  
+                  { `${answer}`=== 'false'? <i className="fa-3x fa-sharp fa-regular fa-circle-xmark" style={{color:'red'}}></i>:<></>}
+                  </div>
         </div>
     )
 }

@@ -5,7 +5,7 @@ export const questionReducer =createSlice({
         queue:[],
         answers:[],
         trace:0,
-        chkAns:false
+        chkAns:""
     },
     reducers:{
         startExamAction:(state,action)=>{
@@ -20,7 +20,8 @@ export const questionReducer =createSlice({
         moveNextAction:(state)=>{
             return {
                 ...state,
-                trace: state.trace+1
+                trace: state.trace+1,
+                chkAns:""
             }
         },
         movePrevAction:(state)=>{
@@ -36,15 +37,21 @@ export const questionReducer =createSlice({
                 trace:0
             }
         },
-        evaluateAnswerAction:(state)=>{
+        evaluateCorrectAnswerAction:(state)=>{
             return {
                 ...state,
                 chkAns:true
+            }
+        },
+        evaluateInCorrectAnswerAction:(state)=>{
+            return {
+                ...state,
+                chkAns:false
             }
         }
 
     }
 })
 
-export const {startExamAction,moveNextAction,movePrevAction,resetAllAction,evaluateAnswerAction}=questionReducer.actions
+export const {startExamAction,moveNextAction,movePrevAction,resetAllAction,evaluateCorrectAnswerAction,evaluateInCorrectAnswerAction}=questionReducer.actions
 export default questionReducer.reducer
