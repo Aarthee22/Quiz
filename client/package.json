@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://{aarthee22}.github.io/{Quiz}",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
