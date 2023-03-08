@@ -51,6 +51,10 @@ export default function Quiz(){
     }
       /**Next button event handler */
     function onNext(){
+      if(result.length && result.length>=queue.length){
+        pause();
+     return <Navigate to={'/result'} replace='true'></Navigate>
+    }
         /** Update the trace value by one using move next action */
    //console.log(queue.length)
        if(trace<queue.length){
@@ -58,10 +62,7 @@ export default function Quiz(){
         dispatch(moveNextQuestion());
     
        }
-       if(result.length && result.length>=queue.length){
-        pause();
-     return <Navigate to={'/result'} replace='true'></Navigate>
-    }
+     
     }
 
    //console.log(value)
