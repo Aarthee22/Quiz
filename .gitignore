@@ -1,4 +1,10 @@
-/server/node_modules
+# misc
 .env
 
+# production
 /client/build
+
+# dependencies
+
+node_modules
+/server/node_modules
