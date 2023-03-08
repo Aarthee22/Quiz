@@ -58,6 +58,10 @@ export default function Quiz(){
         dispatch(moveNextQuestion());
     
        }
+       if(result.length && result.length>=queue.length){
+        pause();
+     return <Navigate to={'/result'} replace='true'></Navigate>
+    }
     }
 
    //console.log(value)
@@ -86,11 +90,9 @@ export default function Quiz(){
  
 //console.log(chkAns)
 //console.log(result)
+
     /**Finished exam after last question */
-if(result.length && result.length>=queue.length){
-    pause();
- return <Navigate to={'/result'} replace='true'></Navigate>
-}
+
     return(
        
          <div>
