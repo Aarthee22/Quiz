@@ -76,7 +76,7 @@ export default function Quiz(){
    console.log(value)
 
     function onChecked(check){
-        //console.log(check)
+       
         setChecked(check)
             
     }
@@ -97,8 +97,9 @@ export default function Quiz(){
         setIsPlaying(!isPlaying);
       }
  
-//console.log(chkAns)
-
+      if(result.length && result.length>=queue.length){
+        pause();
+      }
 
     /**Finished exam after last question */
 
