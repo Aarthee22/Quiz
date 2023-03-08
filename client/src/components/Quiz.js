@@ -7,7 +7,7 @@ import {pushAnswer} from '../hooks/SetResult.js';
 import Footer from './Footer'
 import useSound from 'use-sound'
 import mySound from '../audio.mp3'
-import {Navigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 export default function Quiz(){
   
@@ -23,6 +23,7 @@ export default function Quiz(){
  useEffect(() => {
   //console.log(value);
 }, [value]);
+
  function handleChange() {
   if(trace<queue.length){
       /** insert a new result into the array */
@@ -45,16 +46,15 @@ export default function Quiz(){
     /**Prev button event handler */
     function onPrev(){
         /** if condition to check if trace>0 */
-        const prev= trace>0?dispatch(movePrevQuestion()):" ";
-        return prev
+        if( trace>0){
+          setChangeText(!value);
+          dispatch(movePrevQuestion());
+        }
+      
         
     }
       /**Next button event handler */
     function onNext(){
-      if(result.length && result.length>=queue.length){
-        pause();
-     return <Navigate to={'/result'} replace='true'></Navigate>
-    }
         /** Update the trace value by one using move next action */
    //console.log(queue.length)
        if(trace<queue.length){
@@ -62,10 +62,18 @@ export default function Quiz(){
         dispatch(moveNextQuestion());
     
        }
-     
+       
+       
+      
+  
     }
 
-   //console.log(value)
+  
+   console.log(result)
+   console.log(trace)
+   console.log(result[trace]) 
+   console.log(trace<queue.length)
+   console.log(value)
 
     function onChecked(check){
         //console.log(check)
@@ -90,7 +98,7 @@ export default function Quiz(){
       }
  
 //console.log(chkAns)
-//console.log(result)
+
 
     /**Finished exam after last question */
 
@@ -109,12 +117,14 @@ export default function Quiz(){
             <Questions onChecked={onChecked} /> 
     
                 <>
-             { trace<queue.length && result[trace]==null && value? <div className='grid'><button id="submitbtn" className='btn next' onClick={handleChange}>Submit</button></div>:
+            {trace< queue.length && result[trace]===undefined && value? <div className='grid'><button id="submitbtn" className='btn next' onClick={handleChange}>Submit</button></div>:
                <div id="navigateQuestions" className='grid'>
                 { trace > 0? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
-                    <button className='btn next' onClick={onNext}>Next</button>
-                   </div>  
-                }
+                {result.length && result.length>=queue.length? <Link className='btn next' to={'/result'}>Finish</Link>:<button className='btn next' onClick={onNext}>Next</button>
+              }  
+                   </div>    
+                    } 
+                
                 
         
 
