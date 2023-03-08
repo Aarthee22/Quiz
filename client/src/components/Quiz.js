@@ -12,13 +12,12 @@ import {Link} from 'react-router-dom'
 export default function Quiz(){
   
     const [check,setChecked]=useState(undefined);
-
     const result= useSelector(state=>state.result.result);
     const {queue,trace,answers}= useSelector(state=>state.questions);
-   
     const dispatch=useDispatch();
  //console.log(answers)
- const [value, setChangeText] = useState(true);
+    const [value, setChangeText] = useState(true);
+    const [isPlaying, setIsPlaying] = React.useState(false);
 
  useEffect(() => {
   //console.log(value);
@@ -27,63 +26,46 @@ export default function Quiz(){
  function handleChange() {
   if(trace<queue.length){
       /** insert a new result into the array */
-      if(result.length<=trace){
+    if(result.length<=trace){
       dispatch(pushAnswer(check))
        }
      }
-      setChecked(undefined);
-  
+    setChecked(undefined);
     if(check==answers[trace]){
-
       dispatch(evaluateCorrectAnswer())
     }
     else{
       dispatch(evaluateInCorrectAnswer())
     }
     setChangeText(!value);
-    if(result.length && result.length>=queue.length){
+    if(result.length && (result.length+1)>=queue.length){
       pause();
     }
   };
 
     /**Prev button event handler */
-    function onPrev(){
+  function onPrev(){
         /** if condition to check if trace>0 */
-        if( trace>0){
-          setChangeText(!value);
-          dispatch(movePrevQuestion());
-        }
-      
-        
-    }
+    if( trace>0){
+      setChangeText(!value);
+      dispatch(movePrevQuestion());
+    }   
+  }
       /**Next button event handler */
     function onNext(){
         /** Update the trace value by one using move next action */
    //console.log(queue.length)
-       if(trace<queue.length){
+    if(trace<queue.length){
         setChangeText(!value);
         dispatch(moveNextQuestion());
-    
-       }
-       
-       
-      
-  
-    }
-
-  
-   console.log(result)
-   console.log(trace)
-   console.log(result[trace]) 
-   console.log(trace<queue.length)
-   console.log(value)
+     }  
+  }
 
     function onChecked(check){
-       
-        setChecked(check)
-            
+        setChecked(check)    
     }
-    const [isPlaying, setIsPlaying] = React.useState(false);
+
+    
 
     const [play, { pause }] = useSound(mySound,{
         volume: 0.25,
@@ -99,10 +81,6 @@ export default function Quiz(){
         }
         setIsPlaying(!isPlaying);
       }
- 
-     
-
-    /**Finished exam after last question */
 
     return(
        
@@ -113,7 +91,6 @@ export default function Quiz(){
         onClick={togglePlay}><i className="fa-regular fa-circle-pause"></i></button>}
     
         <div className='container1'>
-         {!isPlaying? <p onLoad={togglePlay}> </p>: ''}
             <h1 className='title text-light'>Quiz Application</h1>
             {/* dispaly questions */}
             <Questions onChecked={onChecked} /> 
