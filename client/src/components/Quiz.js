@@ -41,6 +41,9 @@ export default function Quiz(){
       dispatch(evaluateInCorrectAnswer())
     }
     setChangeText(!value);
+    if(result.length && result.length>=queue.length){
+      pause();
+    }
   };
 
     /**Prev button event handler */
@@ -97,9 +100,7 @@ export default function Quiz(){
         setIsPlaying(!isPlaying);
       }
  
-      if(result.length && result.length>=queue.length){
-        pause();
-      }
+     
 
     /**Finished exam after last question */
 
